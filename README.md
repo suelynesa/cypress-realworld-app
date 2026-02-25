@@ -95,7 +95,7 @@ npx cypress open
 ## 📎 Observação
 
 O projeto base foi forkado do Cypress Real World App.
-Os testes automatizados foram desenvolvidos por mim como prática de automação E2E.
+A execução foi realizada manualmente e alguns fluxos críticos foram automatizados utilizando Cypress.
 
 ---
 
