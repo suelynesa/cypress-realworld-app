@@ -1,12 +1,56 @@
-# 🧪 Testes Automatizados - Cypress Real World App
+# 🧪 Automated Testing – Cypress Real World App
 
-Este repositório contém testes automatizados E2E desenvolvidos por mim utilizando Cypress, aplicando boas práticas como Page Object Model e Fixtures.
+This repository contains End-to-End (E2E) automated tests developed using Cypress, applying structured test design and industry best practices.
 
 ---
 
 ## 🎯 Objetivo
 
-Praticar automação de testes end-to-end em uma aplicação real, simulando um ambiente profissional.
+Apply end-to-end test automation in a real-world application, prioritizing critical business flows based on risk and impact analysis.
+
+---
+
+## 🧠 Test Strategy Overview
+Context
+
+The application simulates a financial environment with authentication, user management and money transfer features.
+Considering the business domain, failures in critical flows may cause financial inconsistency and loss of user trust.
+
+# Risk-Based Prioritization
+
+The automation scope was defined based on business impact and regression risk:
+
+1. Authentication (Login)
+     - System entry point
+     - Security-sensitive flow
+     - High impact in case of validation failure
+2. User Registration
+     - Data integrity validation
+     - Required field and error handling validation
+3. Bank Transfer
+     - Core financial functionality
+     - Balance consistency validation
+     - Positive and negative scenarios
+4. Transaction History
+     - Data consistency validation
+     - Empty-state behavior verification
+
+# 🔎 Test Design Techniques Applied
+
+- Equivalence Partitioning
+- Negative Testing
+- Validation Testing
+- Happy Path and Edge Scenarios
+
+# Automation Decision Criteria
+
+Not all scenarios were automated. Priority was given to:
+- Critical business flows
+- Financial operations with higher impact
+- Repetitive validation scenarios
+- Flows with greater regression probability
+
+Exploratory testing was performed to identify risks before automation.
 
 ---
 
@@ -35,55 +79,57 @@ cypress/
 ```
 ---
 
-## ✅ Cenários Automatizados
+## ✅ Automated Scenarios
+
+Os cenários foram definidos com base em fluxos críticos da aplicação, considerando risco de negócio e impacto para o usuário final.
 
 ### 🔐 Login
 
-- Login com credenciais inválidas
-- Validação de mensagem de erro
-- Login com credenciais válidas
-- Validação de redirecionamento para Dashboard
+- Login with invalid credentials
+- Error message validation
+- Login with valid credentials
+- Dashboard redirection validation
 
 ---
 
-### 🔐 Cadastro de usuário
+### 👤 User Registration
 
-- Registro de novo usuário com sucesso
-- Validação de mensagem de confirmação
-- Registro de novo usuário com informações incompletas
-- Validação de mensagem de erro
-
----
-
-### 🔐 Transferência bancária
-
-- Enviar dinheiro com saldo suficiente
-- Validação de mensagem de confirmação
-- Enviar dinheiro com saldo insuficiente
-- Validação de mensagem de erro
+- Successful new user registration
+- Confirmation message validation
+- Registration with incomplete data
+- Error message validation
 
 ---
 
-### 🔐 Histórico de Transações
+### 💸 Bank Transfer
 
-- Visualizar histórico de transações com sucesso
-- Validação de exibição
-- Visualizar o histórico de transações de um usuário sem transações anteriores
-- Validação de mensagem indicando que o usuário não possui transações anteriores
-
----
-
-## 📌 Boas Práticas Aplicadas
-
-- Separação de responsabilidades (Page Object)
-- Reutilização de código
-- Organização por domínio
-- Estrutura escalável
-- Uso de dados externos (fixtures)
+- Transfer with sufficient balance
+- Confirmation message validation
+- Transfer with insufficient balance
+- Error message validation
 
 ---
 
-## 🚀 Como executar os testes
+### 📜 Transaction History
+
+- View transaction history successfully
+- Display validation
+- View history for user without previous transactions
+- Empty-state message validation
+
+---
+
+## 📌 Best Practices Applied
+
+- Separation of responsibilities (Page Object Model)
+- Code reusability
+- Domain-based organization
+- Scalable structure
+- Externalized test data (fixtures)
+
+---
+
+## 🚀 How to Run the Tests
 
 ```bash
 npm install
@@ -92,10 +138,9 @@ npx cypress open
 
 ---
 
-## 📎 Observação
+## 📎 Project Note
 
-O projeto base foi forkado do Cypress Real World App.
-A execução foi realizada manualmente e alguns fluxos críticos foram automatizados utilizando Cypress.
+The base project was forked from the Cypress Real World App.
 
 ---
 
@@ -103,7 +148,9 @@ A execução foi realizada manualmente e alguns fluxos críticos foram automatiz
 
 - [Bug Report Template](docs/bug-report-template.md)
 - [Sample Bug Report](docs/sample-bug-log-001.md)
+- [Quality Analysis](docs/quality-analysis.md)
 
-## 📋 Test Cases
+# 📋 Test Cases
 
-Os casos de teste estão documentados na pasta `/docs`.
+- [Login Test Cases (Sample)](docs/test-cases-login.md)
+- Complete test suite available in Excel format inside `/docs`
