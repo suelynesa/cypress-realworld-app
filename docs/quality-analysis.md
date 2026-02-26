@@ -1,4 +1,4 @@
-# 🔎 Quality Analysis
+# 🔎 Quality Analysis Login Feature
 
 ## 📌 Cenário Avaliado
 Validação do comportamento do sistema após múltiplas tentativas consecutivas de login com senha inválida.

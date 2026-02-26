@@ -16,7 +16,7 @@ Context
 The application simulates a financial environment with authentication, user management and money transfer features.
 Considering the business domain, failures in critical flows may cause financial inconsistency and loss of user trust.
 
-# Risk-Based Prioritization
+## Risk-Based Prioritization
 
 The automation scope was defined based on business impact and regression risk:
 
@@ -35,14 +35,14 @@ The automation scope was defined based on business impact and regression risk:
      - Data consistency validation
      - Empty-state behavior verification
 
-# 🔎 Test Design Techniques Applied
+## 🔎 Test Design Techniques Applied
 
 - Equivalence Partitioning
 - Negative Testing
 - Validation Testing
 - Happy Path and Edge Scenarios
 
-# Automation Decision Criteria
+## Automation Decision Criteria
 
 Not all scenarios were automated. Priority was given to:
 - Critical business flows
@@ -150,7 +150,7 @@ The base project was forked from the Cypress Real World App.
 - [Sample Bug Report](docs/sample-bug-log-001.md)
 - [Quality Analysis](docs/quality-analysis.md)
 
-# 📋 Test Cases
+📋 Test Cases
 
 - [Login Test Cases (Sample)](docs/test-cases-login.md)
 - Complete test suite available in Excel format inside `/docs`
