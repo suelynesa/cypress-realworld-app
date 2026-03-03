@@ -67,3 +67,7 @@ Descrever o comportamento incorreto identificado.
 
 ## 🎥 Evidência
 Print, vídeo ou log da execução do teste.
+
+---
+
+## 🔎 Observações

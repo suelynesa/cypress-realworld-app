@@ -147,10 +147,12 @@ The base project was forked from the Cypress Real World App.
 ## 📄 Documentation
 
 - [Bug Report Template](docs/bug-report-template.md)
-- [Sample Bug Report](docs/sample-bug-log-001.md)
-- [Quality Analysis](docs/quality-analysis.md)
+- [Bug Report SignUp Feature](docs/bug-report-signup-feature.md)
+- [Quality Analysis Login](docs/quality-analysis-login.md)
+- [Quality Analysis SignUp](docs/quality-analysis-signup.md)
 
 📋 Test Cases
 
 - [Login Test Cases (Sample)](docs/test-cases-login.md)
+- [Sign Up Test Cases (Sample)](docs/test-cases-signup.md)
 - Complete test suite available in Excel format inside `/docs`

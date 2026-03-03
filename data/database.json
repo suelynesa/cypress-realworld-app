@@ -3,12 +3,12 @@
     {
       "id": "uBmeaz5pX",
       "uuid": "3b63b436-cacc-457a-a3e8-c962ef9838ac",
-      "firstName": "Ted",
-      "lastName": "Parisian",
+      "firstName": "New First Name",
+      "lastName": "New Last Name",
       "username": "Heath93",
       "password": "$2a$10$nSaCsTPTtbbPTnFXBH0GZu0ExpNMud3d1IuKOC/6a9gwAHkdhppeu",
-      "email": "Santos.Runte65@gmail.com",
-      "phoneNumber": "398-225-9900",
+      "email": "email@email.com",
+      "phoneNumber": "6155551212",
       "avatar": "https://avatars.dicebear.com/api/human/uBmeaz5pX.svg",
       "defaultPrivacyLevel": "public",
       "balance": 150953,
@@ -74,6 +74,28 @@
       "balance": 49474,
       "createdAt": "2023-12-07T04:39:38.383Z",
       "modifiedAt": "2024-03-07T00:07:36.510Z"
+    },
+    {
+      "id": "e_E1WC_bK",
+      "uuid": "d9c4bbfb-c91b-4cdf-bb54-996d4b89afdf",
+      "firstName": "",
+      "lastName": "",
+      "username": "",
+      "password": "$2a$10$kqeRZXEgr2TtyzobiNsgJeajItX838L6SQLikWxMXqXh72/PoGzwG",
+      "balance": 0,
+      "createdAt": "2026-03-03T20:46:56.924Z",
+      "modifiedAt": "2026-03-03T20:46:56.924Z"
+    },
+    {
+      "id": "bcYIH-hNm",
+      "uuid": "eac72d1c-159c-461e-8a52-614d5fb846a3",
+      "firstName": "",
+      "lastName": "",
+      "username": "",
+      "password": "$2a$10$CWkO5I037PaZc6y00dZB2u2a2jojo03fcJoTMk0/87TYFNrLnsKMS",
+      "balance": 0,
+      "createdAt": "2026-03-03T20:51:19.776Z",
+      "modifiedAt": "2026-03-03T20:51:19.776Z"
     }
   ],
   "contacts": [
