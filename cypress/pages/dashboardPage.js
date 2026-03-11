@@ -11,7 +11,7 @@ class dashboardPage {
     checkDashboardPage() {
         cy.get(this.selectorsList().dashBoardGrid)
     }
-
+    
 }
 
 export default dashboardPage

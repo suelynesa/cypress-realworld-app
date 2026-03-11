@@ -1,0 +1,61 @@
+class TransferPage {
+
+    selectorsList() {
+        const selectors = {
+            balanceValue: '[data-test="sidenav-user-balance"]',
+            newTransferButton: '[href="/transaction/new"]',
+            searchContact: '[placeholder="Search..."]',
+            contactList: '[data-test="users-list"]',
+            amountField: '[name="amount"]',
+            addNoteField: '[placeholder="Add a note"]',
+            payButton: '[data-test="transaction-create-submit-payment"]',
+            transferSuccessAlert: '[data-test="alert-bar-success"]',
+            transferErrorAlert: '[data-test="alert-bar-error"]',
+            requestButton: '[data-test="transaction-create-submit-request"]',
+        }
+
+        return selectors
+    }
+
+    getBalance() {
+        return cy.get(this.selectorsList().balanceValue).invoke('text').then((text) => {
+            const cleanText = text.replace('$', '').replace(',', '').trim()
+            const balance = parseFloat(cleanText)      
+            return balance
+        })
+    }
+
+    startNewTransfer(contact) {
+        cy.get(this.selectorsList().newTransferButton).click()
+        cy.get(this.selectorsList().searchContact).type(contact)
+        cy.get(this.selectorsList().contactList).contains(contact).click()
+    }
+
+    completeTransfer(amount, note) {
+        cy.get(this.selectorsList().amountField).clear().type(amount)
+        cy.get(this.selectorsList().addNoteField).type(note)
+    }
+    
+    clickPay() {
+        cy.get(this.selectorsList().payButton).should('be.visible').click()
+    }
+
+    clickRequest() {
+        cy.get(this.selectorsList().requestButton).should('be.visible').click()
+    }
+
+    prepareTransaction(contact, amount, note) {
+        this.startNewTransfer(contact)
+        this.completeTransfer(amount, note)
+    }
+
+    checkSuccessAlert() {
+        cy.get(this.selectorsList().transferSuccessAlert).should('be.visible')
+    }
+
+    checkErrorAlert() {
+        cy.get(this.selectorsList().transferErrorAlert).should('be.visible')
+    }
+}
+
+export default TransferPage
