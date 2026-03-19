@@ -3,13 +3,27 @@ class dashboardPage {
     selectorsList() {
         const selectors = {
             dashBoardGrid: '[data-test="nav-transaction-tabs"]',
+            balanceValue: '[data-test="sidenav-user-balance"]',
+            homeButton: '[data-test="sidenav-home"]',
         }
 
         return selectors
     }
 
     checkDashboardPage() {
-        cy.get(this.selectorsList().dashBoardGrid)
+        return cy.get(this.selectorsList().dashBoardGrid)
+    }
+
+    checkBalance() {    
+        return cy.get(this.selectorsList().balanceValue)
+    }
+
+    getBalance() {
+        return cy.get(this.selectorsList().balanceValue).invoke('text').then((text) => {
+            const cleanText = text.replace('$', '').replace(',', '').trim()
+            const balance = parseFloat(cleanText)      
+            return balance
+        })
     }
     
 }

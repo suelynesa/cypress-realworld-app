@@ -1,4 +1,4 @@
-# 🐞 Bug Report – SIGN UP FEATURE
+# 🐞 Bug Report – Sign Up Feature
 
 ## 🆔 Bug ID
 
@@ -47,7 +47,7 @@ This issue directly impacts the critical authentication flow and compromises the
 
 ## 📌 Precondition
 
-User accesses the system login page.
+User not registered in the system.
 
 ---
 

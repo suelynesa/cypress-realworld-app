@@ -1,11 +1,9 @@
 import LoginPage from '../../pages/loginPage.js'
 import SignUpPage from '../../pages/signUpPage.js'
-import DashboardPage from '../../pages/dashboardPage.js'
 import { generateUser } from '../../support/factories/userFactory.js'
 
 const loginPage = new LoginPage()
 const signUpPage = new SignUpPage()
-const dashboardPage = new DashboardPage()
 
 describe('New User Registration RWA Tests', () => {
 
@@ -13,67 +11,85 @@ describe('New User Registration RWA Tests', () => {
 
   beforeEach(() => {
     user = generateUser()
+  
+    loginPage.accessLoginPage()
+    loginPage.creatAccountButton()
+    signUpPage.accessSignUpPage()
   })
 
-// describe('Happy Path', () => {
-//   it('Register new user successfully', () => {
-//     loginPage.accessLoginPage()
-//     loginPage.creatAccountButton()
+describe('Happy Path', () => {
+  it('Register new user successfully', () => {
+    signUpPage.fillUserData({firstName: user.firstName, lastName: user.lastName, username: user.username, password: user.password})
+    signUpPage.fillConfirmPassword(user.password)  
+    signUpPage.signUpButton()
 
-//     signUpPage.accessSignUpPage()
-//     signUpPage.fillUserData({firstName: user.firstName, lastName: user.lastName, username: user.username, password: user.password})
-//     signUpPage.fillConfirmPassword(user.password)  
-//     signUpPage.signUpButton()
+    cy.url().should('include', '/signin')
+  })       
+  })
 
-//     cy.url().should('include', '/signin')
+describe('Validation Scenarios', () => {
 
-//     loginPage.loginWithAnyUser(user.username, user.password)
-//     loginPage.signInButton()
+  it('should not allow registration with existing username', () => {
 
-//     dashboardPage.checkDashboardPage()
-//   })       
-//   })
+    const username = user.username
 
-// describe('Validation Scenarios', () => {
-//     it('Should not allow registration with incomplete data', () => {
-//       loginPage.accessLoginPage()
-//       loginPage.creatAccountButton()
+    signUpPage.fillUserData({
+      firstName: 'John',
+      lastName: 'Doe',
+      username: username,
+      password: '123456'
+  })
+    signUpPage.fillConfirmPassword('123456') 
+    signUpPage.signUpButton()
 
-//       signUpPage.accessSignUpPage()
-//       signUpPage.fillUserData({lastName: user.lastName, username: user.username, password: user.password})
-//       signUpPage.fillConfirmPassword(user.password)  
-//       signUpPage.validateFieldError(
-//       signUpPage.selectorsList().firstNameField
-// )
-//       signUpPage.disableSignUpButton()
+    cy.url().should('include', '/signin')
+    
+    // tenta criar novamente com mesmo username
+    loginPage.creatAccountButton()
+    
+    signUpPage.fillUserData({
+      firstName: 'John',
+      lastName: 'Doe',
+      username: username,
+      password: '123456'
+  })
+    signUpPage.fillConfirmPassword('123456')
+    signUpPage.validateFieldError(
+    signUpPage.selectorsList().usernameField
+  )
+    signUpPage.disableSignUpButton()
+  })
+        
+  it('Should not allow registration with incomplete data', () => {
+    
+    signUpPage.fillUserData({lastName: user.lastName, username: user.username, password: user.password})
+    signUpPage.fillConfirmPassword(user.password)  
+    signUpPage.validateFieldError(
+    signUpPage.selectorsList().firstNameField
+  )
+    signUpPage.disableSignUpButton()
+  })
 
-//     })
+  it('should not allow registration with fields containing only spaces', () => {
 
-    it('Should demonstrate inconsistency when registering with spaces only', () => {  
-      const spaces = '     '
-      
-      loginPage.accessLoginPage()
-      loginPage.creatAccountButton()
+  const spaces = '     '
 
-      signUpPage.accessSignUpPage()
-      signUpPage.fillUserData({
-        firstName: spaces,
-        lastName: spaces,
-        username: spaces,
-        password: '1234',
-      })
-      
-      signUpPage.fillConfirmPassword('1234')
-      signUpPage.signUpButton()
+  signUpPage.fillUserData({
+    firstName: spaces,
+    lastName: spaces,
+    username: spaces,
+    password: '1234'
+  })
 
-       // 1️⃣ Valida que redirecionou (cadastro foi aceito)
-       cy.url().should('include', '/signin')
+  signUpPage.fillConfirmPassword('1234')
 
-       // 2️⃣ Tenta logar com os mesmos dados
-      //  loginPage.loginWithAnyUser(spaces, '1234')
-      //  loginPage.signInButton()
+  signUpPage.validateFieldError(signUpPage.selectorsList().firstNameField)
+  signUpPage.validateFieldError(signUpPage.selectorsList().lastNameField)
+  signUpPage.validateFieldError(signUpPage.selectorsList().usernameField)
 
-      //  // 3️⃣ Valida que login NÃO funciona
-      //  loginPage.wrongCredentialAlert()
-      })
-    })
+  signUpPage.disableSignUpButton()
+
+  })
+
+})
+})

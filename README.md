@@ -189,8 +189,9 @@ Project documentation simulating a real QA workflow.
 ### Bug Reports
 
 * Bug report template
-* Bug report for Sign Up feature
+* Bug report for Sign Up feature - 
 * Critical bug identified in Transfer feature
+
 
 ### Test Cases
 

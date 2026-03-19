@@ -1,10 +1,8 @@
-import LoginPage from '../../pages/loginPage.js'
 import credentials from '../../fixtures/credentials.json' 
 import DashboardPage from '../../pages/dashboardPage.js'
 import TransferPage from '../../pages/transferPage.js'        
 import TransactionPage from '../../pages/transactionPage.js'
 
-const loginPage = new LoginPage()
 const dashboardPage = new DashboardPage()
 const transferPage = new TransferPage()
 const transactionPage = new TransactionPage()
@@ -22,16 +20,16 @@ describe('Money Transfer Feature', () => {
         
         const transferAmount = 3
                 
-        transferPage.getBalance().then((initialBalance) => {
+        dashboardPage.getBalance().then((initialBalance) => {
 
             transferPage.prepareTransaction(contact, transferAmount, note)
             transferPage.clickPay()
             transferPage.checkSuccessAlert()
             
             transactionPage.checkMineTransactions()
-            transactionPage.checkTransactionDetails(contact, note, transferAmount)
+            transactionPage.checkFirstTransaction(contact, note, transferAmount)
          
-            transferPage.getBalance().then((newBalance) => {
+            dashboardPage.getBalance().then((newBalance) => {
 
                 expect(newBalance).to.be.closeTo(initialBalance - transferAmount, 0.01) 
                
@@ -39,16 +37,47 @@ describe('Money Transfer Feature', () => {
     })
     })
       
-//     it('Should not allow transfer when balance is insufficient', () => {
+    it('Should not allow transfer when balance is insufficient', () => {
                
-//         transferPage.getBalance().then((balance) => {
+        dashboardPage.getBalance().then((balance) => {
 
-//             const transferAmount = Number(balance) + 1
+            const transferAmount = Number(balance) + 1
 
-//         transferPage.prepareTransaction(contact, transferAmount, note)
-//         transferPage.clickPay()
-//         transferPage.checkErrorAlert() // Verificar se o alerta de erro é exibido
-//         // BUG: aplicação permite transferência mesmo sem saldo
-//     })
-// })
+        transferPage.prepareTransaction(contact, transferAmount, note)
+        transferPage.clickPay()
+        transferPage.checkErrorAlert() // Check if the error alert is displayed
+        // BUG: application allows transfer even without balance
+    })
 })
+
+        it('Should not allow transfer with negative values', () => {
+                
+                const transferAmount = -3
+
+           transferPage.prepareTransaction(contact, transferAmount, note)
+           transferPage.clickPay()
+
+           transferPage.checkErrorAlert().should('be.visible') // Check if the error alert is displayed.
+                
+          // Ensures that the transaction was NOT created.
+           transactionPage.checkMineTransactions()
+           transactionPage.checkNegativeValue()
+            
+        // CRITICAL BUG: Application allows transfers with a negative balance, and this amount is added to the balance.
+        })
+
+        it('Should allow transfer with cents', () => {
+                
+                const transferAmount = 3.50
+
+           transferPage.prepareTransaction(contact, transferAmount, note)
+           transferPage.clickPay()
+           transferPage.checkSuccessAlert()
+          
+           transactionPage.checkMineTransactions()
+           transactionPage.checkFirstTransaction(contact, note, transferAmount)
+            
+        // BUG: The system does not allow transactions with cents and rounds up to the nearest whole number.
+        })
+  })
+       

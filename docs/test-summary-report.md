@@ -29,13 +29,15 @@ Operating System: Windows 10 Pro
 
 ## Test Results
 
+## QA Project Metrics
+
 | Metric | Result |
 |------|------|
-| Total Test Cases | 25 |
-| Executed | 25 |
-| Passed | 18 |
-| Failed | 7 |
-| Blocked | 0 |
+| Test Cases Designed | 34 |
+| Test Cases Passed | 25 |
+| Test Cases Failed | 9 |
+| Automated Tests | 10 |
+| Critical Bugs Identified | 1 |
 
 ## Critical Findings
 

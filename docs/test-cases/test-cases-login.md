@@ -1,6 +1,6 @@
 # Login Feature – Test Cases 
 
-This document presents some test cases that were automated with Cypress for login functionality. 
+This document presents some test cases that were automated with Cypress for **login functionality**. 
 The complete test suite is available in the Excel file inside the `/docs` folder.
 
 ---

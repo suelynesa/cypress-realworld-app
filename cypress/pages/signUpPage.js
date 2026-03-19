@@ -8,13 +8,12 @@ class SignUpPage {
             passwordField: '[name="password"]',
             signUpButton: '[type="submit"]',
             confirmPasswordField: '[name="confirmPassword"]',
-                       
-        }     
+        }              
         
         return selectors
     }
 
-     accessSignUpPage() {
+    accessSignUpPage() {
         cy.visit('/signup')
         cy.url().should('include', 'signup')
     }

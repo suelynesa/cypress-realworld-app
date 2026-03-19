@@ -2,7 +2,6 @@ class TransferPage {
 
     selectorsList() {
         const selectors = {
-            balanceValue: '[data-test="sidenav-user-balance"]',
             newTransferButton: '[href="/transaction/new"]',
             searchContact: '[placeholder="Search..."]',
             contactList: '[data-test="users-list"]',
@@ -17,13 +16,7 @@ class TransferPage {
         return selectors
     }
 
-    getBalance() {
-        return cy.get(this.selectorsList().balanceValue).invoke('text').then((text) => {
-            const cleanText = text.replace('$', '').replace(',', '').trim()
-            const balance = parseFloat(cleanText)      
-            return balance
-        })
-    }
+    
 
     startNewTransfer(contact) {
         cy.get(this.selectorsList().newTransferButton).click()
