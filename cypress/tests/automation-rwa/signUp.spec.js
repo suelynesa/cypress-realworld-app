@@ -58,6 +58,8 @@ describe('Validation Scenarios', () => {
     signUpPage.selectorsList().usernameField
   )
     signUpPage.disableSignUpButton()
+    
+    //BUG: System allows duplicate usernames
   })
         
   it('Should not allow registration with incomplete data', () => {
@@ -89,7 +91,8 @@ describe('Validation Scenarios', () => {
 
   signUpPage.disableSignUpButton()
 
-  })
+  //BUG: System allows fields with only spaces and enable registration
 
 })
-})
+})  
+})  

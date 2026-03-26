@@ -26,6 +26,8 @@ describe('Money Transfer Feature', () => {
             transferPage.clickPay()
             transferPage.checkSuccessAlert()
             
+            dashboardPage.clickHomeButton()
+
             transactionPage.checkMineTransactions()
             transactionPage.checkFirstTransaction(contact, note, transferAmount)
          
@@ -37,7 +39,7 @@ describe('Money Transfer Feature', () => {
     })
     })
       
-    it('Should not allow transfer when balance is insufficient', () => {
+    it('Should not allow transfers without sufficient funds', () => {
                
         dashboardPage.getBalance().then((balance) => {
 
@@ -45,7 +47,8 @@ describe('Money Transfer Feature', () => {
 
         transferPage.prepareTransaction(contact, transferAmount, note)
         transferPage.clickPay()
-        transferPage.checkErrorAlert() // Check if the error alert is displayed
+        transferPage.checkErrorAlert() 
+
         // BUG: application allows transfer even without balance
     })
 })
@@ -57,7 +60,7 @@ describe('Money Transfer Feature', () => {
            transferPage.prepareTransaction(contact, transferAmount, note)
            transferPage.clickPay()
 
-           transferPage.checkErrorAlert().should('be.visible') // Check if the error alert is displayed.
+           transferPage.checkErrorAlert()
                 
           // Ensures that the transaction was NOT created.
            transactionPage.checkMineTransactions()
@@ -73,6 +76,8 @@ describe('Money Transfer Feature', () => {
            transferPage.prepareTransaction(contact, transferAmount, note)
            transferPage.clickPay()
            transferPage.checkSuccessAlert()
+
+           dashboardPage.clickHomeButton()
           
            transactionPage.checkMineTransactions()
            transactionPage.checkFirstTransaction(contact, note, transferAmount)

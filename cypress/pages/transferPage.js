@@ -16,8 +16,6 @@ class TransferPage {
         return selectors
     }
 
-    
-
     startNewTransfer(contact) {
         cy.get(this.selectorsList().newTransferButton).click()
         cy.get(this.selectorsList().searchContact).type(contact)

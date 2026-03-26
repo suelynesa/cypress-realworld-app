@@ -7,23 +7,21 @@ const dashboardPage = new DashboardPage()
 
 describe('Login RWA Tests', () => {
 
-  it('Login - Sucess', () => {
+  it('Login with valid credentials', () => {
     loginPage.accessLoginPage()
     loginPage.loginWithAnyUser(credentials.valid.username, credentials.valid.password)
     loginPage.signInButton()
     dashboardPage.checkDashboardPage()
-   
   })
 
-  it('Login - Failed', () => {
+  it('Login with invalid credentials', () => {
     loginPage.accessLoginPage()
     loginPage.loginWithAnyUser(credentials.invalid.username, credentials.invalid.password)
     loginPage.signInButton()
     loginPage.wrongCredentialAlert() 
-
   })
 
-  it('Login - Password Length Rule', () => {
+  it('Validation of minimum password length rule at login', () => {
     loginPage.accessLoginPage()
     loginPage.loginWithAnyUser(credentials.valid.username, credentials.short.password)
 

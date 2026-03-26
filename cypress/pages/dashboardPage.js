@@ -14,6 +14,10 @@ class dashboardPage {
         return cy.get(this.selectorsList().dashBoardGrid)
     }
 
+    clickHomeButton() { 
+        cy.get(this.selectorsList().homeButton).click()
+    }
+
     checkBalance() {    
         return cy.get(this.selectorsList().balanceValue)
     }

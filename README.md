@@ -9,6 +9,7 @@ The project simulates a real QA workflow including:
 * Test Case Design
 * Bug Reporting
 * End-to-End Test Automation
+* Quality & UX Analysis
 
 ---
 
@@ -16,26 +17,57 @@ The project simulates a real QA workflow including:
 
 Apply end-to-end test automation in a real-world application while prioritizing critical business flows based on risk and impact analysis.
 
-The goal of this project is to demonstrate a **complete QA process**, from test design to automation.
+The goal of this project is to demonstrate a **complete QA process**, from test design to automation, including **critical thinking and product quality analysis**.
 
 ---
 
-# 🚨 Critical Bug Discovered
+# 🚨 Critical Bugs Discovered
 
-During testing of the **Money Transfer feature**, a critical defect was identified.
+During testing, multiple relevant defects were identified:
 
-The system allows **negative transfer values**, which results in the **user account balance increasing instead of decreasing**.
+## 💸 Money Transfer
 
-Example:
+The system allows **negative transfer values**, resulting in the **user balance increasing instead of decreasing**.
 
-Initial Balance: $100
-Transfer Amount: -10
+**Example:**
 
-Final Balance: $110
+* Initial Balance: $100
+* Transfer Amount: -10
+* Final Balance: $110
 
-This issue breaks financial transaction rules and represents a **critical financial integrity problem**.
+👉 This represents a **critical financial integrity issue**.
 
-A detailed bug report is available in the project documentation.
+---
+
+## 📜 Transaction History
+
+### 1. Inconsistent Data Across Tabs
+
+* Transactions appear correctly in **Mine**
+* But may not appear in **Everyone**
+
+👉 Indicates inconsistency between data sources
+
+---
+
+### 2. Value Filter Limitation
+
+* Filter only supports values between **$0 and $1000**
+* System allows transactions above this value
+
+👉 **Functional inconsistency**
+
+---
+
+### 3. Filter Persistence Issue
+
+* Applied filters are lost after page refresh
+
+👉 **State management issue**
+
+---
+
+Detailed bug reports are available in the `/docs` folder.
 
 ---
 
@@ -45,36 +77,53 @@ A detailed bug report is available in the project documentation.
 
 The application simulates a financial environment with authentication, user management and money transfer features.
 
-Considering the business domain, failures in critical flows may cause **financial inconsistency and loss of user trust**.
+Failures in critical flows may cause:
+
+* Financial inconsistency
+* Loss of user trust
 
 ---
 
-# Risk-Based Prioritization
+# ⚠️ Risk-Based Prioritization
 
-The automation scope was defined based on business impact and regression risk.
+Automation scope was defined based on business impact and regression risk.
 
 ### 1️⃣ Authentication (Login)
 
 * System entry point
-* Security-sensitive flow
-* High impact in case of validation failure
+* Security-sensitive
+* High impact
+
+---
 
 ### 2️⃣ User Registration
 
-* Data integrity validation
-* Required field validation
-* Error handling verification
+* Data validation
+* Error handling
+* Input consistency
 
-### 3️⃣ Money Transfer
+---
+
+### 3️⃣ Bank Account (First-Time User Flow)
+
+* Mandatory step after first login
+* Blocks access to core features
+
+---
+
+### 4️⃣ Money Transfer
 
 * Core financial functionality
-* Balance consistency validation
-* Positive and negative scenarios
+* Balance validation
+* Critical scenarios
 
-### 4️⃣ Transaction History
+---
 
-* Data consistency validation
-* Empty-state behavior verification
+### 5️⃣ Transaction History
+
+* Data consistency
+* Filtering behavior
+* Empty-state validation
 
 ---
 
@@ -96,11 +145,11 @@ Not all scenarios were automated.
 Automation was prioritized for:
 
 * Critical business flows
-* Financial operations with higher risk
-* Repetitive validation scenarios
-* Flows with greater regression probability
+* Financial operations
+* Regression-prone features
+* Core user journeys
 
-Exploratory testing was performed before automation to identify potential risks and validation gaps.
+Exploratory testing was performed before automation to identify risks and inconsistencies.
 
 ---
 
@@ -109,16 +158,17 @@ Exploratory testing was performed before automation to identify potential risks 
 * Cypress
 * JavaScript
 * Page Object Model (POM)
+* Custom Commands
 * Fixtures
-* Git
-* GitHub
+* Factory Pattern (test data generation)
+* Git & GitHub
 
 ---
 
 # 📂 Project Structure
 
 ```
-cypress/
+rwa-cypress-tests/
  ├── fixtures/
  │    └── credentials.json
  │
@@ -126,6 +176,7 @@ cypress/
  │    ├── loginPage.js
  │    ├── dashboardPage.js
  │    ├── signUpPage.js
+ │    ├── bankAccountPage.js
  │    ├── transactionPage.js
  │    └── transferPage.js
  │
@@ -136,49 +187,75 @@ cypress/
       └── automation-rwa
            ├── login.spec.js
            ├── signUp.spec.js
-           └── transfer.spec.js
+           ├── transfer.spec.js
+           ├── transactions.spec.js
+           └── bankAccount.spec.js
 ```
 
 ---
 
 # ✅ Automated Scenarios
 
-Test scenarios were defined based on critical application flows and business impact.
-
-### 🔐 Login
-
-* Login with invalid credentials
-* Error message validation
-* Login with valid credentials
-* Dashboard redirection validation
+Test scenarios were defined based on critical flows and business impact.
 
 ---
 
-### 👤 User Registration
+## 🔐 Login
 
-* Successful new user registration
-* Confirmation message validation
-* Registration with incomplete data
-* Error message validation
-* Validation for inputs containing only spaces
+* Successful login with valid credentials
+* Login with non-existent username
+* Validation of minimum password length rule at login
 
 ---
 
-### 💸 Money Transfer
+## 👤 User Registration
+
+* Register new user successfully
+* Required field validation
+* Error message validation
+* Validation for inputs with only spaces
+* Existing user registration
+
+---
+
+## 🏦 Bank Account
+
+* Require bank account creation on first login
+* Successful bank account creation
+
+---
+
+## 💸 Money Transfer
 
 * Transfer with sufficient balance
-* Success message validation
 * Transfer with insufficient balance
 * Error message validation
-* Transfer with negative value (critical defect identified)
+* Transfer with negative value (critical bug)
+* Transfer with decimal values (cents)
 
 ---
 
-### 📜 Transaction History
+## 📜 Transaction History
 
-* View transaction history successfully
-* Transaction list display validation
-* Empty-state validation for users without previous transactions
+* View transaction history (Everyone)
+* Empty-state validation for new users
+* Transaction visibility in the "Everyone" history after transfer (bug identified)
+* Filter persistence after refresh (bug identified)
+
+---
+
+# 📊 Quality Analysis (UX & Product)
+
+Beyond functional testing, a quality analysis was performed.
+
+### 🔍 Key Findings:
+
+* Date filter exists but transaction dates are not displayed
+* Value filter (slider) is imprecise and limits usability
+
+👉 These were documented as **UX improvements**, not bugs.
+
+📄 See: `docs/transaction-history-analysis`
 
 ---
 
@@ -186,24 +263,29 @@ Test scenarios were defined based on critical application flows and business imp
 
 Project documentation simulating a real QA workflow.
 
-### Bug Reports
+### 🐞 Bug Reports
 
-* Bug report template
-* Bug report for Sign Up feature - 
-* Critical bug identified in Transfer feature
+* Transfer critical bug
+* Transaction history inconsistencies
 
+---
 
-### Test Cases
+### 🧪 Test Cases
 
-* Login test cases
-* Sign Up test cases
-* Transfer test cases
+* Login
+* Sign Up
+* Transfer
+* Transaction History
+* Bank Account
 
-### Additional Documentation
+---
 
-* Risk analysis
+### 📊 Additional Documentation
+
 * Test strategy
+* Risk analysis
 * Test summary report
+* Quality analysis
 
 All documentation is available in the `/docs` folder.
 
