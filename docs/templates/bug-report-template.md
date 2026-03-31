@@ -1,22 +1,22 @@
-# 🐞 Bug Report Template
+# Bug Report Template
 
 This template was used to document defects identified during manual and automated testing.
 
 ---
 
-## 🆔 Bug ID
+## Bug ID
 
 Example: AUTH-001
 
 ---
 
-## 🏷 Title
+## Title
 
 Clear and concise description of the issue.
 
 ---
 
-## 🌍 Environment
+## Environment
 
 * Environment: (Localhost / Staging / Production)
 * URL:
@@ -26,37 +26,37 @@ Clear and concise description of the issue.
 
 ---
 
-## 📂 Type
+## Type
 
 (Functional, UI, Validation, Integration, Performance, Security, Regression)
 
 ---
 
-## 🚨 Severity
+## Severity
 
 (Critical, High, Medium, Low, Trivial)
 
 ---
 
-## ⏳ Priority
+## Priority
 
 (High, Medium, Low)
 
 ---
 
-## 🧠 Justification
+## Justification
 
 Example: The issue compromises authentication and allows unauthorized access to the system.
 
 ---
 
-## 📌 Precondition
+## Precondition
 
 Conditions that must be met before executing the test.
 
 ---
 
-## 🔁 Steps to Reproduce
+## Steps to Reproduce
 
 1.
 2.
@@ -64,24 +64,24 @@ Conditions that must be met before executing the test.
 
 ---
 
-## ✅ Expected Result
+## Expected Result
 
 Describe the correct system behavior.
 
 ---
 
-## ❌ Actual Result
+## Actual Result
 
 Describe the incorrect behavior observed.
 
 ---
 
-## 🎥 Evidence
+## Evidence
 
 Screenshots, video recordings, or logs from the test execution.
 
 ---
 
-## 🔎 Notes
+## Notes [Opcional]
 
 Additional observations or technical considerations related to the issue.

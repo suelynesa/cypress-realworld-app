@@ -1,16 +1,16 @@
-# 🐞 Bug Report – Transfer Feature
+# Bug Report – Transfer Feature
 
-## 🆔 Bug ID
+## Bug ID
 BUG-TRANS-001
 
 ---
 
-## 🏷 Title
+## Title
 Negative transfer values increase user account balance
 
 ---
 
-## 🌍 Environment
+## Environment
 
 Environment: Localhost  
 URL: http://localhost:3000  
@@ -19,30 +19,30 @@ Operating System: Windows 10 Pro
 
 ---
 
-## 📂 Type
+## Type
 
 Validation
 
 ---
 
-## 🚨 Severity
+## Severity
 Critical / Blocker
 
 ---
 
-## ⏳ Priority
+## Priority
 High
 
 ---
 
-## 🧠 Justification
+## Justification
 
 * This issue breaks financial transaction rules and allows users to artificially increase their account balance.
 * This represents a critical integrity and security problem in the application.
 
 ---
 
-## 📌 Preconditions
+## Preconditions
 
 User is logged into the application  
 User has available balance  
@@ -50,7 +50,7 @@ A valid contact exists in the system
 
 ---
 
-## 🔁 Steps to Reproduce
+## Steps to Reproduce
 
 1. Log into the application
 2. Click on "$ NEW" to start a new transfer
@@ -61,14 +61,14 @@ A valid contact exists in the system
 
 ---
 
-## ✅ Expected Result
+## Expected Result
 
 * The system should reject negative values and display a validation error message.
 * The transfer should not be processed.
 
 ---
 
-## ❌ Actual Result
+## Actual Result
 
 * The transfer is processed successfully.
 * Instead of decreasing the account balance, the balance increases.
@@ -83,6 +83,7 @@ Final Balance: $110
 ```
 ---
 
-## 🎥 Evidence
+## Evidence
 
-See automated test execution and logs demonstrating the incorrect balance update.
+- See automated test execution and logs demonstrating the incorrect balance update.
+- Video: /docs/evidence/BUG-TRANS-001/BUG-TRANS-001-negative-value-repro.mp4

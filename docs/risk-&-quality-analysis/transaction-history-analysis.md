@@ -1,99 +1,80 @@
-# 📊 Transaction History - Quality Analysis
+# Risk & Quality Analysis – Transaction History Feature
 
-## 📌 Context
+## 1. Date Filter Without Visible Dates
 
-This document presents a quality analysis of the Transaction History feature based on exploratory testing. Due to the absence of formal requirements (user stories and acceptance criteria), the analysis is based on expected user behavior and usability principles.
+This may not be considered a bug if the filtering logic is correctly implemented in the backend.
+However, it represents a **significant usability and transparency risk**.
 
----
+### Observation
 
-## 🔍 Issue 1: Date Filter Without Visible Dates
+The system provides a date filter for transaction history, but transaction entries do not display any date information.
 
-### 🧪 Description
+Users are unable to verify whether the filtered results correspond to the selected date range.
 
-The system provides a date filter for transaction history. However, transaction entries do not display any date information.
+### Identified Risks
 
-### 🎯 Expected Behavior
+* Lack of transparency in filtered data  
+* Reduced user trust in the system  
+* Inability for users to validate system behavior  
+* Potential confusion when analyzing transactions  
 
-* Each transaction should display its date
-* Users should be able to visually confirm that filtered results match the selected date range
+### Improvement Suggestion
 
-### ⚠️ Actual Behavior
+* Display the transaction date in each list item  
+* Use a clear and consistent date format (e.g., DD/MM/YYYY or locale-based)  
+* Ensure alignment between filter criteria and visible data  
 
-* The filter appears to work
-* However, transaction dates are not displayed
-* Users cannot verify whether the filter is correctly applied
+### Expected Benefits
 
-### 🧠 Analysis
-
-This is not necessarily a functional bug, since the filtering mechanism may still be working correctly in the backend.
-
-However, it represents a **usability and UX issue**, because:
-
-* It reduces transparency
-* It prevents validation by the user
-* It can reduce trust in the system
-
-### 🏷 Classification
-
-* UX Issue / Usability Gap
-
-### 💡 Recommendation
-
-* Display transaction date in each list item
-* Ensure the format is clear and consistent (e.g., DD/MM/YYYY or locale-based)
+* Increased transparency and user trust  
+* Improved usability and data validation by users  
+* Better alignment between UI and system behavior  
+* Enhanced user experience when analyzing transactions  
 
 ---
 
-## 🔍 Issue 2: Value Filter Usability (Slider Limitation)
+## 2. Value Filter Limitation and Usability Issues
 
-### 🧪 Description
+This may be considered a **functional limitation combined with a usability issue**, depending on system requirements.
+It represents a **risk to data accessibility and user experience**.
+
+### Observation
 
 The transaction value filter uses a slider with a fixed range from $0 to $1000.
 
-### 🎯 Expected Behavior
+However:
 
-* Users should be able to filter transactions based on any valid value present in the system
-* Users should be able to precisely define minimum and maximum values
+* The system allows transactions above $1000  
+* The slider makes it difficult to select precise values  
 
-### ⚠️ Actual Behavior
+### Identified Risks
 
-* The slider limits selection between $0 and $1000
-* The system allows transactions above $1000
-* It is difficult to select exact values using the slider
+* Inability to filter all valid transactions  
+* Difficulty in locating specific transaction values  
+* Poor precision in user input  
+* Frustration during filtering interactions  
 
-### 🧠 Analysis
+### Improvement Suggestion
 
-This issue has two aspects:
+* Extend the filter range to support all possible transaction values  
+* Add input fields for manual value entry (min/max)  
+* Optionally combine slider with manual input for better usability  
 
-#### 1. Functional inconsistency
+### Expected Benefits
 
-* The filter does not support all valid transaction values
-* This may prevent users from finding specific transactions
-
-#### 2. Usability issue
-
-* Slider interaction is imprecise
-* Poor user experience for exact filtering
-
-### 🏷 Classification
-
-* Functional Bug (range limitation)
-* UX Improvement (input precision)
-
-### 💡 Recommendation
-
-* Allow values above $1000
-* Add input fields for manual entry (min/max)
-* Optionally combine slider + input fields
+* Full coverage of all transaction values in filtering  
+* Improved accuracy in user-defined filters  
+* Enhanced usability and interaction control  
+* Better overall user experience when searching transactions  
 
 ---
 
-## 🧠 Final Considerations
+## Conclusion
 
-This analysis highlights the importance of:
+The analysis identified weaknesses related to:
 
-* Aligning UI with system capabilities
-* Providing clear feedback to users
-* Ensuring consistency between filters and displayed data
+* Usability and user experience  
+* Data visibility and transparency  
+* Alignment between UI and system capabilities  
 
-Even when functionality works, lack of visibility and usability can significantly impact user experience.
+Improving how information is displayed and how filters behave will significantly enhance user trust, efficiency, and overall product quality.

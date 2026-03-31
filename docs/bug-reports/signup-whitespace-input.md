@@ -1,16 +1,16 @@
-# 🐞 Bug Report – Sign Up Feature
+# Bug Report – Sign Up Feature
 
-## 🆔 Bug ID
+## Bug ID
 BUG-SIGN-001
 
 ---
 
-## 🏷 Title
+## Title
 Allows user registration with required fields containing only whitespace, causing login failure afterward
 
 ---
 
-## 🌍 Environment
+## Environment
 * Environment: Localhost
 * URL: http://localhost:3000
 * Browser: Chrome 145
@@ -18,32 +18,32 @@ Allows user registration with required fields containing only whitespace, causin
 
 ---
 
-## 📂 Type
+## Type
 Functional
 
 ---
 
-## 🚨 Severity
+## Severity
 High
 
 ---
 
-## ⏳ Priority
+## Priority
 High
 
 ---
 
-## 🧠 Justification
+## Justification
 This issue directly impacts the critical authentication flow and compromises the integrity of stored user data.
 
 ---
 
-## 📌 Precondition
+## Precondition
 User not registered in the system.
 
 ---
 
-## 🔁 Steps to Reproduce
+## Steps to Reproduce
 1. Click the **"Don't have an account? Sign Up"** button
 2. Fill **First Name** with whitespace characters (" ")
 3. Fill **Last Name** with whitespace characters (" ")
@@ -55,7 +55,7 @@ User not registered in the system.
 
 ---
 
-## ✅ Expected Result
+## Expected Result
 * The system should treat fields containing only whitespace as invalid
 * An error message should be displayed indicating that the field is required
 * The **Sign Up** button should remain disabled and not allow interaction
@@ -63,19 +63,20 @@ User not registered in the system.
 
 ---
 
-## ❌ Actual Result
+## Actual Result
 * The **Sign Up** button becomes enabled and allows interaction
 * The registration is completed successfully
 * The user is unable to authenticate afterward
 
 ---
 
-## 🎥 Evidence
-Screen recording showing the automated test execution using Cypress.
+## Evidence
+- Screen recording showing the automated test execution using Cypress.
+- Video: /docs/evidence/BUG-SIGN-001/BUG-SIGN-001-absence-sanitization-repro.mp4
 
 ---
 
-## 🔎 Notes
+## Notes
 The behavior suggests the absence of input sanitization (such as `trim()`) before required field validation and/or before persisting the data on the backend.
 
 There are also indications of inconsistency between validation rules applied during registration and those used during authentication, suggesting possible misalignment between frontend and backend validation logic.

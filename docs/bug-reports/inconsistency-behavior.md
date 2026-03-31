@@ -1,88 +1,97 @@
-# Bug Report – Transaction not displayed in "Everyone" history
+# Bug Report – Transaction History Feature
 
----
-
-## 🆔 ID
+## Bug ID
 BUG-HIST-001
 
 ---
 
-## 📌 Title
+## Title
 Transaction does not appear in "Everyone" transaction history after successful transfer
 
 ---
 
-## 🧭 Feature
-Transaction History
+## Environment
+
+Environment: Localhost  
+URL: http://localhost:3000  
+Browser: Chrome 145  
+Operating System: Windows 10 Pro  
 
 ---
 
-## 🚨 Severity
+## Type
+
+Functional
+
+---
+
+## Severity
 High
 
 ---
 
-## 🔥 Priority
+## Priority
 Medium
 
 ---
 
-## 🧠 Justification
-Since the system is a financial application, inconsistency in how data is presented can lead to:
+## Justification
 
-- Loss of user trust  
-- Misinterpretation of transaction status  
-- Potential concerns about data integrity  
-
-However, the issue does not block the main functionality. Users are still able to:
-
-- Perform transfers  
-- View their own transactions  
+* This issue creates inconsistency in how transaction data is displayed across different views.
+* It may lead to loss of user trust and confusion regarding transaction visibility.
+* Although it does not block core functionality, it impacts data transparency and reliability.
 
 ---
 
-## 📌 Preconditions
-- User is registered and logged into the system  
-- User has sufficient balance  
-- There is at least one contact available for transfer  
+## Preconditions
+
+User is logged into the application  
+User has sufficient balance  
+At least one contact exists in the system  
 
 ---
 
-## 🔄 Steps to Reproduce
-1. Click on **"$ NEW"**  
-2. Select a contact  
-3. Enter a valid transfer amount  
-4. Add a note  
-5. Click **"Pay"**  
-6. Navigate to **"Mine"** tab → confirm transaction is displayed  
-7. Navigate to **"Everyone"** tab  
-8. Check the transaction list 
+## Steps to Reproduce
+
+1. Log into the application  
+2. Click on "$ NEW" to start a new transfer  
+3. Select a contact  
+4. Enter a valid transfer amount  
+5. Add a note  
+6. Click "Pay"  
+7. Navigate to "Mine" tab and confirm the transaction is displayed  
+8. Navigate to "Everyone" tab  
+9. Check the transaction list  
 
 ---
 
-## ✅ Expected Result
-- The transaction should be displayed in **"Everyone"** transaction history  
-- The transaction should appear at the top of the list (most recent)
+## Expected Result
+
+* The transaction should be displayed in the "Everyone" transaction history  
+* The transaction should appear at the top of the list (most recent)  
 
 ---
 
-## ❌ Actual Result
-- The transaction is displayed in **"Mine"**  
-- The transaction does NOT appear in **"Everyone"**
+## Actual Result
+
+* The transaction is displayed in "Mine"  
+* The transaction does NOT appear in "Everyone"  
 
 ---
 
-## 🎥 Evidence
-- Automated test: `TC-HIST-009`
-- Cypress test result showing failure
-- (Optional) Screenshot / video of execution
+## Evidence
+
+- See automated test execution and logs demonstrating that the transaction is not displayed in the "Everyone" transaction history after a successful transfer.
+- Video: /docs/evidence/BUG-HIST-001/BUG-HIST-001-inconsistency-behavior-repro.mp4
 
 ---
 
-## 🔎 Notes
+## Notes
+
 This issue indicates a possible inconsistency in how transactions are propagated or retrieved across different history views.
 
 It may be related to:
-- Backend data synchronization
-- Filtering logic in "Everyone" tab
-- Caching or API response issues
+
+* Backend data synchronization  
+* Filtering logic in "Everyone" tab  
+* Caching or API response issues  

@@ -1,4 +1,4 @@
-# 🧪 Test Strategy – Real World App QA Project
+# Test Strategy – Real World App QA Project
 
 ## 1. Introduction
 
@@ -58,19 +58,7 @@ The following testing approaches were applied during the project:
 
 ---
 
-# 5. Test Design Techniques
-
-The following techniques were used when designing test cases:
-
-* Equivalence Partitioning
-* Boundary Value Analysis
-* Negative Testing
-* Happy Path Testing
-* Edge Case Testing
-
----
-
-# 6. Test Approach
+# 5. Test Approach
 
 The testing process followed these main steps:
 
@@ -85,7 +73,7 @@ Automation was prioritized for scenarios with higher business impact and regress
 
 ---
 
-# 7. Automation Strategy
+# 6. Automation Strategy
 
 Automation was applied selectively based on the following criteria:
 
@@ -98,7 +86,7 @@ Automated tests were implemented using **Cypress** following the **Page Object M
 
 ---
 
-# 8. Test Environment
+# 7. Test Environment
 
 Testing was executed in the following environment:
 
@@ -109,7 +97,7 @@ Operating System: Windows 10 Pro
 
 ---
 
-# 9. Tools Used
+# 8. Tools Used
 
 The following tools were used during the testing process:
 
@@ -121,9 +109,9 @@ The following tools were used during the testing process:
 
 ---
 
-# 10. Risks and Limitations
+# 9. Risks and Limitations
 
-The following risks were identified during testing:
+The following risks were identified based on observed application behavior and testing activities:
 
 * Weak password policy
 * Lack of input validation for certain fields
@@ -132,7 +120,7 @@ The following risks were identified during testing:
 
 ---
 
-# 11. Deliverables
+# 10. Deliverables
 
 The following QA artifacts were produced during the project:
 
