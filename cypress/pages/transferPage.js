@@ -11,6 +11,7 @@ class TransferPage {
             transferSuccessAlert: '[data-test="alert-bar-success"]',
             transferErrorAlert: '[data-test="alert-bar-error"]',
             requestButton: '[data-test="transaction-create-submit-request"]',
+            transactionButton: '[data-test="new-transaction-return-to-transactions"]'
         }
 
         return selectors
@@ -46,6 +47,10 @@ class TransferPage {
 
     checkErrorAlert() {
         cy.get(this.selectorsList().transferErrorAlert).should('be.visible')
+    }
+
+    returnToTransactions() {
+        cy.get(this.selectorsList().transactionButton).should('be.visible').click()
     }
 }
 

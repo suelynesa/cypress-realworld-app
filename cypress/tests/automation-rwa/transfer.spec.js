@@ -55,7 +55,7 @@ describe('Money Transfer Feature', () => {
 
         it('Should not allow transfer with negative values', () => {
                 
-                const transferAmount = -3
+                const transferAmount = -10
 
            transferPage.prepareTransaction(contact, transferAmount, note)
            transferPage.clickPay()

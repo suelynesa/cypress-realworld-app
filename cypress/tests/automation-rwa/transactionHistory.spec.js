@@ -1,13 +1,11 @@
 import credentials from '../../fixtures/credentials.json' 
 import BankAccountPage from '../../pages/bankAccountPage.js'
-import DashboardPage from '../../pages/dashboardPage.js'
 import TransactionPage from '../../pages/transactionPage.js'
 import TransferPage from '../../pages/transferPage.js'  
 import { generateUser } from '../../support/factories/userFactory.js'
 
 const transactionPage = new TransactionPage()
-const transferPage = new TransferPage() 
-const dashboardPage = new DashboardPage()
+const transferPage = new TransferPage()
 const bankAccountPage = new BankAccountPage()
 
 describe('Transaction History Feature (logged user)', () => {
@@ -32,8 +30,7 @@ describe('Transaction History Feature (logged user)', () => {
         transferPage.prepareTransaction(contact, transferAmount, note)
         transferPage.clickPay()
         transferPage.checkSuccessAlert()
-
-        dashboardPage.clickHomeButton()
+        transferPage.returnToTransactions()
 
         transactionPage.checkEveryoneTransactions()
         transactionPage.checkFirstTransaction(contact, note, transferAmount)

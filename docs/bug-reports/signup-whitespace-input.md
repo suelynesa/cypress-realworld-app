@@ -71,8 +71,11 @@ User not registered in the system.
 ---
 
 ## Evidence
-- Screen recording showing the automated test execution using Cypress.
-- Video: /docs/evidence/BUG-SIGN-001/BUG-SIGN-001-absence-sanitization-repro.mp4
+- Video (Manual Reproduction): /docs/evidence/BUG-SIGN-001-whitespace-input/whitespace-input-manual-repro.mp4
+- Video (Automated Test - Cypress): /docs/evidence/BUG-SIGN-001-whitespace-input/whitespace-input-cypress-repro.mp4
+- Screenshot 1: /docs/evidence/BUG-SIGN-001-whitespace-input/whitespace-input-field.png
+- Screenshot 2: /docs/evidence/BUG-SIGN-001-whitespace-input/signup-enabled.png
+- Screenshot 3: /docs/evidence/BUG-SIGN-001-whitespace-input/login-disabled.png
 
 ---
 

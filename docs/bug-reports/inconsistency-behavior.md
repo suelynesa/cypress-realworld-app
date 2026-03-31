@@ -59,9 +59,9 @@ At least one contact exists in the system
 4. Enter a valid transfer amount  
 5. Add a note  
 6. Click "Pay"  
-7. Navigate to "Mine" tab and confirm the transaction is displayed  
-8. Navigate to "Everyone" tab  
-9. Check the transaction list  
+7. Click "Return to Transactions"
+8. Navigate to "Everyone" tab and confirm that transaction is not displayed  
+9. Navigate to "Mine" tab and confirm the transaction is displayed  
 
 ---
 
@@ -81,8 +81,14 @@ At least one contact exists in the system
 
 ## Evidence
 
-- See automated test execution and logs demonstrating that the transaction is not displayed in the "Everyone" transaction history after a successful transfer.
-- Video: /docs/evidence/BUG-HIST-001/BUG-HIST-001-inconsistency-behavior-repro.mp4
+## Evidence
+
+- Video (Manual Reproduction): /docs/evidence/BUG-HIST-001-inconsistency-behavior/inconsistency-manual-repro.mp4
+- Video (Automated Test - Cypress): /docs/evidence/BUG-HIST-001-inconsistency-behavior/inconsistency-cypress-repro.mp4
+- Screenshot 1: /docs/evidence/BUG-HIST-001-inconsistency-behavior/transfer-initiation.png
+- Screenshot 2: /docs/evidence/BUG-HIST-001-inconsistency-behavior/confirm-payment.png
+- Screenshot 3: /docs/evidence/BUG-HIST-001-inconsistency-behavior/transaction-visible-in-mine.png
+- Screenshot 4: /docs/evidence/BUG-HIST-001-inconsistency-behavior/missing-in-everyone.png
 
 ---
 
