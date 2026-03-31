@@ -116,8 +116,14 @@ All documentation is available in the `/docs` folder.
 
 # How to Run the Tests
 
+## Requirements
+
+- Node.js installed
+- Yarn installed
+
 ```bash
-npm install
+npm install yarn@latest -g
+yarn dev
 npx cypress open
 ```
 
